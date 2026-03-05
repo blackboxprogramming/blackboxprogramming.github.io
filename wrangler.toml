@@ -1,0 +1,14 @@
+# BlackRoad OS, Inc. — Proprietary. All Rights Reserved.
+# Cloudflare Workers configuration
+
+name = "blackboxprogramming-edge"
+main = "workers/redirect-worker.js"
+compatibility_date = "2024-12-01"
+
+[env.production]
+routes = [
+  { pattern = "blackboxprogramming.github.io/*", zone_name = "github.io" }
+]
+
+[env.staging]
+name = "blackboxprogramming-edge-staging"
