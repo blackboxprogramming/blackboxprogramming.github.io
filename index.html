@@ -1,133 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlackRoad OS — The Operating System for Governed AI</title>
-  <meta name="description" content="BlackRoad OS: RoadAuth, Lucidia, Quantum. Three products. One governed platform. Built by Alexa Amundson.">
-  <meta property="og:title" content="BlackRoad OS, Inc.">
-  <meta property="og:description" content="Three products. One platform. Zero compliance gaps. The operating system for governed AI.">
-  <meta property="og:url" content="https://blackroad.io">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --violet: #8a2be2;
-      --pink: #ff1d6c;
-      --accent: #da70d6;
-      --blue: #2979ff;
-      --cyan: #00e5ff;
-      --bg: #000;
-      --text: #fff;
-      --dim: rgba(255,255,255,0.5);
-      --border: rgba(138,43,226,0.2);
-      --card: rgba(255,255,255,0.04);
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
-    a { color: var(--violet); text-decoration: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Hero — BlackRoad Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+img,svg{image-rendering:crisp-edges}
+:root{
+  --g:linear-gradient(90deg,#FF6B2B,#FF2255,#CC00AA,#8844FF,#4488FF,#00D4FF);
+  --g135:linear-gradient(135deg,#FF6B2B,#FF2255,#CC00AA,#8844FF,#4488FF,#00D4FF);
+  --bg:#000;--white:#fff;--black:#000;
+  --border:#1a1a1a;--muted:#444;--sub:#737373;
+  --sg:'Space Grotesk',sans-serif;--jb:'JetBrains Mono',monospace;
+}
+body{background:var(--bg);color:var(--white);font-family:var(--sg);overflow-x:hidden}
 
-    .hero {
-      position: relative; min-height: 100vh; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; text-align: center; padding: 2rem; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(138,43,226,0.12), transparent 70%);
-      border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%);
-      animation: breathe 8s ease-in-out infinite;
-    }
-    @keyframes breathe { 0%,100% { transform: translate(-50%,-50%) scale(1); opacity:.3; } 50% { transform: translate(-50%,-50%) scale(1.15); opacity:.15; } }
+/* ─── GRADIENT BAR ─── */
+.grad-bar{height:4px;background:var(--g)}
 
-    .hero-content { position: relative; z-index: 1; max-width: 900px; }
-    .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(138,43,226,0.1); border: 1px solid var(--border); border-radius: 100px; padding: 8px 20px; font-size: 13px; font-weight: 500; color: var(--violet); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 32px; }
-    .badge .dot { width: 6px; height: 6px; background: var(--violet); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
-    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.4; } }
+/* ─── NAV ─── */
+nav{display:flex;align-items:center;justify-content:space-between;padding:16px 48px;border-bottom:1px solid var(--border)}
+.nav-logo{font-weight:700;font-size:20px;color:var(--white);display:flex;align-items:center;gap:10px}
+.nav-logo-mark{width:28px;height:4px;border-radius:2px;background:var(--g)}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--white);text-decoration:none;opacity:.5;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-actions{display:flex;gap:12px}
+.btn-outline{padding:8px 20px;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--white);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sg);transition:border-color .2s}
+.btn-outline:hover{border-color:#444}
+.btn-solid{padding:8px 20px;border:none;border-radius:6px;background:var(--white);color:var(--black);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sg)}
 
-    h1 { font-size: clamp(42px, 8vw, 80px); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 20px; background: linear-gradient(135deg, #8a2be2, #da70d6, #ff1d6c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .tagline { font-size: clamp(18px, 3vw, 28px); font-weight: 300; color: var(--dim); margin-bottom: 48px; }
-    .actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; transition: all 0.2s; }
-    .btn-primary { background: linear-gradient(135deg, var(--violet), #6a1fb8); color: #fff; }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(138,43,226,0.4); }
-    .btn-outline { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.8); border: 1px solid var(--border); }
-    .btn-outline:hover { background: rgba(138,43,226,0.1); transform: translateY(-2px); }
+/* ─── HERO ─── */
+.hero{text-align:center;padding:120px 48px 80px;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;color:var(--white);margin-bottom:32px}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--g135)}
+.hero h1{font-size:72px;font-weight:700;color:var(--white);line-height:1.05;margin-bottom:24px;max-width:800px;margin-left:auto;margin-right:auto}
+.hero p{font-size:18px;color:var(--white);opacity:.5;max-width:520px;margin:0 auto 48px;line-height:1.7}
+.hero-cta{display:flex;gap:16px;justify-content:center}
+.btn-hero{padding:14px 36px;border:none;border-radius:8px;background:var(--white);color:var(--black);font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sg)}
+.btn-hero-outline{padding:14px 36px;border:1px solid var(--border);border-radius:8px;background:transparent;color:var(--white);font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sg);transition:border-color .2s}
+.btn-hero-outline:hover{border-color:#444}
 
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
-    .product { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: all 0.3s; }
-    .product:hover { border-color: var(--violet); transform: translateY(-4px); }
-    .product .tam { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--violet); margin-bottom: 8px; }
-    .product h3 { font-size: 24px; margin-bottom: 8px; }
-    .product p { font-size: 14px; color: var(--dim); line-height: 1.6; }
+/* ─── DECORATIVE SHAPES ─── */
+.hero-orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.15;pointer-events:none}
+.hero-orb-1{width:400px;height:400px;background:#FF2255;top:0;left:10%}
+.hero-orb-2{width:300px;height:300px;background:#4488FF;top:60px;right:10%}
+.hero-orb-3{width:200px;height:200px;background:#8844FF;bottom:0;left:40%}
 
-    .stats { display: flex; justify-content: center; gap: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 80px 0; }
-    .stat { flex: 1; max-width: 200px; padding: 40px 20px; text-align: center; border-right: 1px solid var(--border); }
-    .stat:last-child { border-right: none; }
-    .stat-value { font-size: 36px; font-weight: 800; background: linear-gradient(135deg, var(--violet), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 6px; }
-    .stat-label { font-size: 12px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.1em; }
+/* ─── METRICS BAR ─── */
+.metrics{display:flex;justify-content:center;gap:64px;padding:48px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.metric{text-align:center}
+.metric-value{font-size:36px;font-weight:700;color:var(--white)}
+.metric-label{font-family:var(--jb);font-size:11px;color:var(--white);opacity:.4;letter-spacing:.08em;text-transform:uppercase;margin-top:4px}
 
-    .section-title { text-align: center; font-size: clamp(24px, 4vw, 40px); margin-bottom: 48px; padding-top: 80px; }
+/* ─── FEATURES ─── */
+.features{padding:80px 48px;max-width:1200px;margin:0 auto}
+.features-head{text-align:center;margin-bottom:64px}
+.features-head h2{font-size:36px;font-weight:700;color:var(--white);margin-bottom:12px}
+.features-head p{font-size:15px;color:var(--white);opacity:.4;max-width:460px;margin:0 auto}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature-card{border:1px solid var(--border);border-radius:12px;padding:32px;transition:border-color .2s}
+.feature-card:hover{border-color:#333}
+.feature-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px;border:1px solid var(--border);position:relative;overflow:hidden}
+.feature-icon::before{content:'';position:absolute;inset:0;background:var(--g135);opacity:.1}
+.feature-card h3{font-size:16px;font-weight:600;color:var(--white);margin-bottom:8px}
+.feature-card p{font-size:13px;color:var(--white);opacity:.4;line-height:1.7}
 
-    footer { padding: 40px 2rem; text-align: center; border-top: 1px solid var(--border); }
-    .footer-name { font-size: 14px; font-weight: 600; color: var(--dim); margin-bottom: 4px; }
-    .footer-name span { color: var(--violet); }
-    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+/* ─── CTA SECTION ─── */
+.cta-section{padding:80px 48px;text-align:center}
+.cta-box{max-width:700px;margin:0 auto;padding:64px;border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden}
+.cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--g)}
+.cta-box h2{font-size:32px;font-weight:700;color:var(--white);margin-bottom:12px}
+.cta-box p{font-size:14px;color:var(--white);opacity:.4;margin-bottom:32px;max-width:400px;margin-left:auto;margin-right:auto}
 
-    @media (max-width: 600px) {
-      .stats { flex-direction: column; }
-      .stat { border-right: none; border-bottom: 1px solid var(--border); }
-      .products { grid-template-columns: 1fr; }
-    }
-  </style>
+/* ─── FOOTER ─── */
+footer{border-top:1px solid var(--border);padding:48px;display:flex;justify-content:space-between;align-items:center}
+.footer-brand{font-weight:700;font-size:16px;color:var(--white)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:var(--white);opacity:.4;text-decoration:none;transition:opacity .2s}
+.footer-links a:hover{opacity:1}
+.footer-copy{font-size:12px;color:var(--white);opacity:.3}
+.grad-bar-bottom{height:4px;background:var(--g)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  nav{padding:14px 20px;flex-wrap:wrap;gap:12px}
+  .nav-links{display:none}
+  .hero{padding:80px 20px 60px}
+  .hero h1{font-size:40px}
+  .hero p{font-size:15px}
+  .hero-cta{flex-direction:column;align-items:center}
+  .metrics{flex-wrap:wrap;gap:32px;padding:32px 20px}
+  .features{padding:48px 20px}
+  .features-grid{grid-template-columns:1fr}
+  .cta-section{padding:48px 20px}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:32px 20px}
+}
+</style>
 </head>
 <body>
+<div class="grad-bar"></div>
 
-  <section class="hero">
-    <div class="hero-content">
-      <div class="badge"><span class="dot"></span> BlackRoad OS, Inc.</div>
-      <h1>The Operating System for Governed AI</h1>
-      <p class="tagline">Three products. One platform. Zero compliance gaps.</p>
-      <div class="actions">
-        <a href="https://github.com/blackboxprogramming" class="btn btn-primary">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
-          GitHub
-        </a>
-        <a href="https://blackroad.io" class="btn btn-outline">blackroad.io</a>
-      </div>
-    </div>
-  </section>
+<nav>
+  <div class="nav-logo"><img src="blackroad-logo.png" alt="BlackRoad" style="width:32px;height:32px;border-radius:50%"> BlackRoad</div>
+  <div class="nav-links">
+    <a href="https://blackroad-io.pages.dev">Product</a>
+    <a href="https://blackroad-docs-hub.pages.dev">Docs</a>
+    <a href="https://blackroad-store.pages.dev">Pricing</a>
+    <a href="https://blackroad-ideas.pages.dev">Blog</a>
+  </div>
+  <div class="nav-actions">
+    <button class="btn-outline">Sign In</button>
+    <button class="btn-solid">Get Started</button>
+  </div>
+</nav>
 
-  <h2 class="section-title">Three Products. Three Markets.</h2>
-  <div class="products">
-    <div class="product">
-      <div class="tam">$53.9B TAM</div>
-      <h3>RoadAuth</h3>
-      <p>IAM built for compliance. 4 AI security agents. SOC 2, HIPAA, FedRAMP out of the box. JWT + Paseto, WebAuthn biometrics.</p>
+<section class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-badge"><div class="hero-badge-dot"></div> Now Available</div>
+  <h1>Build the future with sovereign intelligence</h1>
+  <p>A distributed operating system for autonomous agents, built on open infrastructure you own and control.</p>
+  <div class="hero-cta">
+    <button class="btn-hero">Start Building</button>
+    <button class="btn-hero-outline">View Documentation</button>
+  </div>
+</section>
+
+<section class="metrics">
+  <div class="metric"><div class="metric-value">52</div><div class="metric-label">TOPS Compute</div></div>
+  <div class="metric"><div class="metric-value">5</div><div class="metric-label">Edge Nodes</div></div>
+  <div class="metric"><div class="metric-value">207</div><div class="metric-label">Repositories</div></div>
+  <div class="metric"><div class="metric-value">48+</div><div class="metric-label">Domains</div></div>
+</section>
+
+<section class="features">
+  <div class="features-head">
+    <h2>Everything you need</h2>
+    <p>Sovereign infrastructure from edge to cloud, designed for intelligent systems.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>Edge Compute</h3>
+      <p>Hailo-8 AI accelerators delivering 52 TOPS across distributed Pi 5 nodes.</p>
     </div>
-    <div class="product">
-      <div class="tam">$437.5B TAM</div>
-      <h3>Lucidia</h3>
-      <p>The AI that remembers you. Universal memory layer, multi-AI orchestration, 108 local models. Sovereign — runs on your hardware.</p>
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <h3>Mesh Network</h3>
+      <p>WireGuard mesh connecting every node with encrypted tunnels and failover.</p>
     </div>
-    <div class="product">
-      <div class="tam">$7-14B TAM</div>
-      <h3>Quantum</h3>
-      <p>Circuits, not slides. Visual circuit designer, quantum simulator, VQE/QAOA/Grover's/QFT. 1,012 verified equations.</p>
+    <div class="feature-card">
+      <div class="feature-icon">🛡</div>
+      <h3>Self-Healing</h3>
+      <p>Autonomous watchdogs and heartbeats keep services alive without intervention.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📡</div>
+      <h3>Global CDN</h3>
+      <p>Cloudflare tunnels route 48+ domains through edge nodes worldwide.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧠</div>
+      <h3>Local AI</h3>
+      <p>Ollama models running on-device with custom CECE personalities and TTS.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔄</div>
+      <h3>GitOps</h3>
+      <p>Self-hosted Gitea with 207 repositories and automated GitHub mirroring.</p>
     </div>
   </div>
+</section>
 
-  <div class="stats">
-    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Pi 5 Nodes</div></div>
-    <div class="stat"><div class="stat-value">52</div><div class="stat-label">TOPS AI</div></div>
-    <div class="stat"><div class="stat-value">108</div><div class="stat-label">Local Models</div></div>
-    <div class="stat"><div class="stat-value">612</div><div class="stat-label">Scripts</div></div>
+<section class="cta-section">
+  <div class="cta-box">
+    <h2>Ready to deploy?</h2>
+    <p>Get started with BlackRoad OS in minutes. No vendor lock-in, no cloud dependency.</p>
+    <button class="btn-hero">Deploy Now</button>
   </div>
+</section>
 
-  <footer>
-    <div class="footer-name"><span>BlackRoad OS</span>, Inc. — Alexa Amundson</div>
-    <div class="footer-copy">&copy; 2026 BlackRoad OS, Inc. All rights reserved.</div>
-  </footer>
-
+<footer>
+  <div class="footer-brand">BlackRoad</div>
+  <div class="footer-links">
+    <a href="https://blackroad-docs-hub.pages.dev">Docs</a>
+    <a href="https://github.com/blackboxprogramming">GitHub</a>
+    <a href="https://blackroad-status.pages.dev">Status</a>
+    <a href="https://support-blackroad-io.pages.dev">Contact</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 BlackRoad. All rights reserved.</div>
+</footer>
+<div class="grad-bar-bottom"></div>
 </body>
 </html>
